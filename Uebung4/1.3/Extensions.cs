@@ -5,8 +5,13 @@ namespace ExtensionMethods
 {
     public static class Extensions
     {
-        //ForEachElem hier als Extension-Method implementieren
-        //
+        public static void ForEachElem<T> (this IEnumerable<T> collection, Action<T> f)
+        {
+            foreach(T elem in collection) {
+                f(elem);
+
+            }
+        }
     }
 }
 

@@ -13,9 +13,9 @@ namespace ExtensionMethods
  		    };
 
             foreach (string s in identifiers)
-                Console.WriteLine("{0} becomes: {1}", s, Extensions.CamelCase(s));
+                Console.WriteLine("{0} becomes: {1}", s, Extensions.ToCamelCase(s));
             foreach (string s in identifiers)
-                Console.WriteLine("{0} becomes: {1}", s, s.CamelCase());
+                Console.WriteLine("{0} becomes: {1}", s, s.ToCamelCase());
 
             Console.WriteLine("Press key to exit");
             Console.ReadKey();

@@ -19,9 +19,23 @@ namespace ExtensionMethods
                 action(item);
         }
 
+
+        public static IEnumerable<T> HSRWhere<T>(this IEnumerable<T> collection, Func<T, bool> statement)
+        {
+            foreach (T elem in collection)
+            {
+                if (statement(elem)) {
+                    yield return elem;
+                }
+               
+            }
+        }
+
         /* to do
          * 
          *  HSRWhere
+         *  
+          
          *  HSROfType
          *  HSRToList
 

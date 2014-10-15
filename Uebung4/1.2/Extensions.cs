@@ -5,8 +5,16 @@ namespace ExtensionMethods
 {
     public static class Extensions
     {
-        //SafeToString hier als Extension-Method implementieren
-        //
+        public static string SafeToString(this object o)
+        {
+           if (o != null) {
+               return o.ToString();
+           }
+           else
+           {
+               return "null";
+           }
+       }
     }
 }
 

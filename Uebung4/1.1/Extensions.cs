@@ -8,6 +8,11 @@ namespace ExtensionMethods
     {
         //CamelCase hier als Extension-Method implementieren (Funktionalität für das Casing ist in "ToCamelCaseInternal" enthalten).
         //
+
+        public static string ToCamelCase(this string s) {
+            return ToCamelCaseInternal(s);
+        }
+
         
         private static string ToCamelCaseInternal(string s)
         {
