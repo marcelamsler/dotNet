@@ -8,6 +8,9 @@ namespace CounterClientWinFormsManual
     public partial class Form1 : Form
     {
 
+        private ICounterService counterService;
+        private ChannelFactory<ICounterService> channelFactory;
+
         public Form1()
         {
             InitializeComponent();
@@ -16,31 +19,31 @@ namespace CounterClientWinFormsManual
 
         private void InitializeCounter()
         {
-            using (ServiceHost host = new ServiceHost(typeof(ICounterService))){
-                host.Open();
-                host.
-            }
-
-
+            channelFactory = new ChannelFactory<ICounterService>("CounterService");
+            counterService = channelFactory.CreateChannel();
+            counterService.CounterState = new CounterState();
+            counterService.CounterState.MaxCountValue = 5;
         }
 
         private void IncBtnClick(object sender, EventArgs e)
         {
-
+            counterService.increment();
+            SafeUpdate(counterService.CounterState.CountValue);
         }
 
         private void DecBtnClick(object sender, EventArgs e)
         {
+            counterService.decrement();
+            SafeUpdate(counterService.CounterState.CountValue);
 
         }
 
         private void OnClosing(object sender, FormClosingEventArgs e)
         {
-            // TODO: Uncomment this!
-            //if (channelFactory.State != CommunicationState.Closed)
-            //{
-            //    channelFactory.Close();
-            //}
+            if (channelFactory.State != CommunicationState.Closed)
+            {
+                channelFactory.Close();
+            }
         }
 
         delegate void UpdateDel(int result);
