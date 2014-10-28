@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CounterService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CounterService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/CounterServiceCommon" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICounterService_get_CountValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_CountValue" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_CountValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_CountValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CountValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_CountValue" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CountValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_CountValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_MaxCountValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_MaxCountValue" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_MaxCountValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_MaxCountValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_MaxCountValue_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_MaxCountValue" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_MaxCountValue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_MaxCountValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_CounterId_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_CounterId" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_CounterId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_CounterIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CounterId_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_CounterId" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CounterId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_CounterIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_CounterState_InputMessage">
+    <wsdl:part name="parameters" element="tns:get_CounterState" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_get_CounterState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:get_CounterStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CounterState_InputMessage">
+    <wsdl:part name="parameters" element="tns:set_CounterState" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_set_CounterState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:set_CounterStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_increment_InputMessage">
+    <wsdl:part name="parameters" element="tns:increment" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_increment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:incrementResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_increment_CounterFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/CounterServiceCommon" name="detail" element="q1:CounterFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_decrement_InputMessage">
+    <wsdl:part name="parameters" element="tns:decrement" />
+  </wsdl:message>
+  <wsdl:message name="ICounterService_decrement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:decrementResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICounterService">
+    <wsdl:operation name="get_CountValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/get_CountValue" message="tns:ICounterService_get_CountValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/get_CountValueResponse" message="tns:ICounterService_get_CountValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_CountValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/set_CountValue" message="tns:ICounterService_set_CountValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/set_CountValueResponse" message="tns:ICounterService_set_CountValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_MaxCountValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/get_MaxCountValue" message="tns:ICounterService_get_MaxCountValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/get_MaxCountValueResponse" message="tns:ICounterService_get_MaxCountValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_MaxCountValue">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/set_MaxCountValue" message="tns:ICounterService_set_MaxCountValue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/set_MaxCountValueResponse" message="tns:ICounterService_set_MaxCountValue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_CounterId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/get_CounterId" message="tns:ICounterService_get_CounterId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/get_CounterIdResponse" message="tns:ICounterService_get_CounterId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_CounterId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/set_CounterId" message="tns:ICounterService_set_CounterId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/set_CounterIdResponse" message="tns:ICounterService_set_CounterId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="get_CounterState">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/get_CounterState" message="tns:ICounterService_get_CounterState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/get_CounterStateResponse" message="tns:ICounterService_get_CounterState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="set_CounterState">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/set_CounterState" message="tns:ICounterService_set_CounterState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/set_CounterStateResponse" message="tns:ICounterService_set_CounterState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="increment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/increment" message="tns:ICounterService_increment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/incrementResponse" message="tns:ICounterService_increment_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICounterService/incrementCounterFaultContractFault" name="CounterFaultContractFault" message="tns:ICounterService_increment_CounterFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="decrement">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICounterService/decrement" message="tns:ICounterService_decrement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICounterService/decrementResponse" message="tns:ICounterService_decrement_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CounterService" type="tns:ICounterService">
+    <wsp:PolicyReference URI="#CounterService_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="get_CountValue">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/get_CountValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CountValue">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/set_CountValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_MaxCountValue">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/get_MaxCountValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_MaxCountValue">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/set_MaxCountValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_CounterId">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/get_CounterId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CounterId">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/set_CounterId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_CounterState">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/get_CounterState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CounterState">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/set_CounterState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="increment">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/increment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CounterFaultContractFault">
+        <soap12:fault use="literal" name="CounterFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="decrement">
+      <soap12:operation soapAction="http://tempuri.org/ICounterService/decrement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CounterService">
+    <wsdl:port name="CounterService" binding="tns:CounterService">
+      <soap12:address location="net.tcp://localhost:12022/CounterService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:12022/CounterService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>MARCELAMSLE45A2\marcelamsler</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
